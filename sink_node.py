@@ -23,7 +23,7 @@ def on_message(client, userdata, message):
         image_data = base64.b64decode(picture_data)
 
         # Save image data to file
-        filename = f"{timestamp}.jpg"
+        filename = f"i_{timestamp}.jpg"
         with open(filename, "wb") as f:
             f.write(image_data)
 
