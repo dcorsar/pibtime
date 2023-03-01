@@ -3,9 +3,11 @@ import picamera
 import time
 import base64
 import json
+import ssl
 
 # Define MQTT parameters
-broker_address = "localhost"
+broker_address = "soc-broker.rgu.ac.uk"
+broker_port = 8883
 camera_topic = "camera"
 picture_topic = "picture"
 
@@ -17,8 +19,10 @@ device_id = int(device_id)
 
 # Define MQTT callback function
 def on_message(client, userdata, message):
-    payload = message.payload.decode("utf-8")
-    if payload.isnumeric() and int(payload) == device_id - 1:
+    payload = json.loads(message.payload.decode("utf-8"))
+    print(payload)
+    camera_number = payload["camera"]
+    if isinstance(camera_number, int) and int(camera_number) == device_id - 1:
         # Take a picture with the PiCam module
         with picamera.PiCamera() as camera:
             camera.start_preview()
@@ -41,12 +45,29 @@ def on_message(client, userdata, message):
 
         # Publish JSON object with camera ID, picture data, and timestamp
         client.publish(picture_topic, json.dumps(data))
+        
+                # Publish message to camera_topic without the picture data
+        data = {
+            "camera": device_id,
+            "timestamp": current_time
+        }
+        client.publish(camera_topic, json.dumps(data))
 
+
+def on_connect(client, userdata, flags, rc):
+    if (rc == 0):
+        client.subscribe(camera_topic)
+        
 # Set up MQTT client and subscribe to topic
 client = mqtt.Client()
+client.username_pw_set("sociot", password="s7ci7tRGU")
+client.tls_set(cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2)
+client.tls_insecure_set(False)
 client.on_message = on_message
-client.connect(broker_address)
-client.subscribe(camera_topic)
+client.on_connect = on_connect
+
+client.connect(broker_address,port=broker_port)
+
 
 # Start the MQTT client loop
 client.loop_forever()
