@@ -60,6 +60,7 @@ def on_connect(client, userdata, flags, rc):
 
         # now take and send first picture
         with picamera.PiCamera() as camera:
+                    camera.rotation = 180
                     camera.start_preview()
                     time.sleep(2)  # Wait for camera to warm up
                     camera.capture("image.jpg")

@@ -25,6 +25,7 @@ def on_message(client, userdata, message):
     if isinstance(camera_number, int) and int(camera_number) == device_id - 1:
         # Take a picture with the PiCam module
         with picamera.PiCamera() as camera:
+            camera.rotation = 180
             camera.start_preview()
             time.sleep(2)  # Wait for camera to warm up
             camera.capture("image.jpg")
