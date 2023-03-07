@@ -75,6 +75,7 @@ Once the sink node is up and running, you can then setup each camera node. If th
 **Camera Device**
 The camera devices should be deployed similar to the following image - i.e. multiple devices around the thing they are taking pictures of.
 
+![MicrosoftTeams-image (2)](https://user-images.githubusercontent.com/1210289/223456782-33e52b44-d593-41ed-a2b7-b650b09339e4.png)
 
 
 1. Install camera module following instructions at https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/2
