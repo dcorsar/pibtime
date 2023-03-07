@@ -25,6 +25,8 @@ Amateur Film Makers would utilise this product as a cheap way to include a bulle
 
 The system uses a fog paradigm. Each deployed system is setup as a star topology – with camera devices acting as sensor/actuator nodes, a RPi acting as a gateway node that collects data from the others, uses it, and forwards it via the interent. 
 
+![Topic06_sample_assessment_topology](https://user-images.githubusercontent.com/1210289/223459891-15a6d776-b64b-4eb8-9f6f-83acd79b9a52.png)
+
 
 ##### Equipment:
 
