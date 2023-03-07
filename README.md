@@ -97,3 +97,5 @@ The camera devices should be deployed similar to the following image - i.e. mult
 3.	After a few moments, the animation.gif will be created containing the gif of all of the files.  
 4.	Once its been created type, `rm i_*.jpg` to delete all of the images.
 
+## System Demo
+It'll produce something that looks like [this example](https://github.com/dcorsar/pibtime/blob/main/animation.gif)
