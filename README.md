@@ -98,4 +98,4 @@ The camera devices should be deployed similar to the following image - i.e. mult
 4.	Once its been created type, `rm i_*.jpg` to delete all of the images.
 
 ## System Demo
-It'll produce something that looks like [this example](https://github.com/dcorsar/pibtime/blob/main/animation.gif)
+It'll produce something that looks like [this example](https://raw.githubusercontent.com/dcorsar/pibtime/main/animation.gif)
